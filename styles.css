@@ -120,7 +120,7 @@ body {
     margin-top: 80px;
     position: relative;
     min-height: 100vh;
-    background-image: url('images/Garden-turfing.jpg');
+    background-image: url('images/Garden-turfing.webp'), url('images/Garden-turfing.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
