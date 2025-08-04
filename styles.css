@@ -840,4 +840,55 @@ Booking Forms */
     .checkbox-group {
         grid-template-columns: 1fr;
     }
+}/* L
+ocal Areas Section */
+.local-areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.area-group {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.area-group h3 {
+    color: #2d5016;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e8f5d8;
+    padding-bottom: 0.5rem;
+}
+
+.area-group .coverage-areas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.area-group .coverage-areas span {
+    background: #f8fdf4;
+    color: #2d5016;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid #e8f5d8;
+}
+
+@media (max-width: 768px) {
+    .local-areas {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .area-group {
+        padding: 1.5rem;
+    }
 }
