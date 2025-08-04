@@ -1,16 +1,9 @@
-// Mobile Navigation Toggle
+function toggleMenu() {
+    document.querySelector('.nav-menu').classList.toggle('active');
+    document.querySelector('.nav-toggle').classList.toggle('active');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-    }
-    
-    // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -27,9 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
                 
-                // Close mobile menu if open
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
+                document.querySelector('.nav-menu').classList.remove('active');
+                document.querySelector('.nav-toggle').classList.remove('active');
             }
         });
     });
@@ -149,8 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
-});// Ta
-b switching functionality
+});
+
+// Tab switching functionality
 function showTab(tabName) {
     // Hide all forms
     document.getElementById('booking-form').classList.remove('active');
