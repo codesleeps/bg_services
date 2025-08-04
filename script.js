@@ -34,20 +34,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form submission handler
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
-            
-            // Simple form validation
+    // Booking form functionality
+    const bookingForm = document.getElementById('bookingForm');
+    const quoteForm = document.getElementById('quoteForm');
+    
+    // Set minimum date to today
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    const today = new Date().toISOString().split('T')[0];
+    dateInputs.forEach(input => {
+        input.min = today;
+    });
+    
+    // Booking form submission
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+            // Validate required fields before submission
             const requiredFields = this.querySelectorAll('[required]');
             let isValid = true;
             
@@ -60,13 +61,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            if (isValid) {
-                // Show success message (in a real implementation, you'd send this to a server)
-                alert('Thank you for your inquiry! We\'ll get back to you within 24 hours.');
-                this.reset();
-            } else {
+            if (!isValid) {
+                e.preventDefault();
                 alert('Please fill in all required fields.');
+                return false;
             }
+            
+            // If validation passes, form will submit naturally to Netlify
+            // Show loading message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+        });
+    }
+    
+    // Quote form submission
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+            // Get selected services
+            const serviceCheckboxes = this.querySelectorAll('input[name="services"]:checked');
+            
+            // Validate required fields
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#e0e0e0';
+                }
+            });
+            
+            // Check if at least one service is selected
+            if (serviceCheckboxes.length === 0) {
+                alert('Please select at least one service.');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields and select at least one service.');
+                return false;
+            }
+            
+            // If validation passes, form will submit naturally to Netlify
+            // Show loading message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
         });
     }
     
@@ -105,4 +149,29 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+});// Ta
+b switching functionality
+function showTab(tabName) {
+    // Hide all forms
+    document.getElementById('booking-form').classList.remove('active');
+    document.getElementById('quote-form').classList.remove('active');
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected form and activate tab
+    if (tabName === 'booking') {
+        document.getElementById('booking-form').classList.add('active');
+        document.querySelector('.tab-btn[onclick="showTab(\'booking\')"]').classList.add('active');
+    } else if (tabName === 'quote') {
+        document.getElementById('quote-form').classList.add('active');
+        document.querySelector('.tab-btn[onclick="showTab(\'quote\')"]').classList.add('active');
+    }
+}
+
+// Initialize with booking tab active
+document.addEventListener('DOMContentLoaded', function() {
+    showTab('booking');
 });
