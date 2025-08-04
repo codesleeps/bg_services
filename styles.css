@@ -120,7 +120,7 @@ body {
     margin-top: 80px;
     position: relative;
     min-height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+    background-image: url('images/Garden-turfing.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -655,6 +655,7 @@ allery Section */
     height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .before img:hover, .after img:hover {
