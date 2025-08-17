@@ -133,10 +133,11 @@ body {
     background-image: url('images/Garden-turfing.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: transform;
 }
 
 .hero-overlay {
@@ -165,6 +166,7 @@ body {
     margin-bottom: 1.5rem;
     line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    contain: layout style paint;
 }
 
 .hero-text p {
