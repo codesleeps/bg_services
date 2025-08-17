@@ -191,6 +191,8 @@
 </head>
 
 <body>
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top">&#8679;</button>
     <header class="header">
         <nav class="nav">
             <div class="nav-container">
@@ -701,6 +703,23 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+    // Back to Top Button functionality
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.style.opacity = '1';
+            backToTopBtn.style.pointerEvents = 'auto';
+        } else {
+            backToTopBtn.style.opacity = '0';
+            backToTopBtn.style.pointerEvents = 'none';
+        }
+    });
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    </script>
 </body>
 
 </html>
