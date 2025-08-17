@@ -9,10 +9,45 @@
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
+            gtag('config', 'G-XXXXXXXXXX', {
+                'page_title': 'GreenCare Gardens - Professional Gardening Services',
+                'custom_map': {
+                    'dimension1': 'service_type',
+                    'dimension2': 'location'
+                }
+            });
+            
+            // Track form submissions
+            document.addEventListener('DOMContentLoaded', function() {
+                const forms = document.querySelectorAll('form');
+                forms.forEach(form => {
+                    form.addEventListener('submit', function() {
+                        gtag('event', 'form_submit', {
+                            'event_category': 'engagement',
+                            'event_label': form.id || 'contact_form'
+                        });
+                    });
+                });
+                
+                // Track phone number clicks
+                const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+                phoneLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        gtag('event', 'phone_click', {
+                            'event_category': 'engagement',
+                            'event_label': 'phone_contact'
+                        });
+                    });
+                });
+            });
         </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <title>GreenCare Gardens - Award-Winning Gardening Services Birmingham, Coventry, West Midlands</title>
+    
+    <!-- GitHub Pages Meta -->
+    <meta name="github-repo" content="yourusername/repository-name">
+    <meta name="github-pages" content="true">
     <meta name="description"
         content="Professional gardening services in Birmingham, Coventry & West Midlands. Grass cutting, hedge trimming, power washing, turf laying. Award-winning, carbon neutral. Call 0121 XXX XXXX">
 
@@ -50,17 +85,13 @@
     .header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:fixed;width:100%;top:0;z-index:1000}
     .nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:80px}
     .logo h1{color:#2d5016;font-size:1.8rem;font-weight:700}
-    .nav-menu{display:flex;list-style:none;gap:2rem}
-    .nav-menu a{text-decoration:none;color:#333;font-weight:500}
-    .nav-toggle{display:none;flex-direction:column;cursor:pointer;padding:8px;border:2px solid #2d5016;border-radius:4px}
-    .nav-toggle span{width:25px;height:3px;background:#333;margin:3px 0}
     .hero{margin-top:80px;position:relative;min-height:100vh;background:url('images/Garden-turfing.jpg') center/cover;display:flex;align-items:center;justify-content:center}
     .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(45,80,22,0.7);z-index:1}
     .hero-content{position:relative;z-index:2;max-width:1200px;padding:0 20px;text-align:center}
     .hero-text h1{font-size:4rem;font-weight:700;color:white;margin-bottom:1.5rem;line-height:1.2;text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
-    @media (max-width:768px){.nav-toggle{display:flex}.nav-menu{position:fixed;left:-100%;top:80px;flex-direction:column;background:white;width:100%;transition:0.3s;z-index:999;padding:2rem 0}.nav-menu.active{left:0}.hero-text h1{font-size:2.8rem}}
+    @media (max-width:768px){.hero-text h1{font-size:2.8rem}}
     </style>
-    <link rel="stylesheet" href="styles.css"
+    <link rel="stylesheet" href="styles.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -210,7 +241,7 @@
                     <h1>GreenCare Gardens</h1>
                     <span class="tagline">Community Award-Winning Garden Care</span>
                 </div>
-                <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -239,8 +270,8 @@
                         <span class="badge">West Midlands Coverage</span>
                     </div>
                     <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary">Get Free Quote</a>
-                        <a href="#services" class="btn btn-secondary">Our Services</a>
+                        <a href="#contact" class="btn btn-primary" data-smooth-scroll="#contact">Get Free Quote</a>
+                        <a href="#services" class="btn btn-secondary" data-smooth-scroll="#services">Our Services</a>
                     </div>
                 </div>
             </div>
@@ -469,7 +500,7 @@
 
                 <p style="margin-top: 2rem; color: #666; text-align: center;">
                     <strong>Don't see your area?</strong> We cover many more locations across the West Midlands.
-                    <a href="#contact" style="color: #2d5016; text-decoration: underline;">Contact us</a> to check if we
+                    <a href="#contact" data-smooth-scroll="#contact" style="color: #2d5016; text-decoration: underline;">Contact us</a> to check if we
                     serve your postcode.
                 </p>
             </div>
@@ -483,22 +514,22 @@
                         free consultation.</p>
                 </div>
 
-                <div class="booking-tabs"></div>
-                <button class="tab-btn active" data-tab="booking">Book Service</button>
-                <button class="tab-btn" data-tab="quote">Get Quote</button>
+                <div class="booking-tabs">
+                    <button class="tab-btn active" data-tab="booking">Book Service</button>
+                    <button class="tab-btn" data-tab="quote">Get Quote</button>
+                </div>
             </div>
 
             <div class="contact-content">
                 <!-- Booking Form -->
                 <div id="booking-form" class="booking-form active">
                     <form id="bookingForm" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-label="Book Service Form" autocomplete="on"
-                        action="/success.html"></form>
+                        action="/success.html">
                     <!-- Hidden fields for Netlify Forms -->
                     <input type="hidden" name="bot-field" />
-                    <input type="hidden" name="form-name" value="booking" /></form>
+                    <input type="hidden" name="form-name" value="booking" />
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Full Name *</label>
                             <label for="booking-fullName">Full Name *</label>
                             <input type="text" id="booking-fullName" name="fullName" required>
                         </div>
@@ -587,13 +618,12 @@
                 <!-- Quote Form -->
                 <div id="quote-form" class="quote-form">
                     <form id="quoteForm" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-label="Get Quote Form" autocomplete="on"
-                        action="/success.html"></form>
+                        action="/success.html">
                     <!-- Hidden fields for Netlify Forms -->
                     <input type="hidden" name="bot-field" />
-                    <input type="hidden" name="form-name" value="quote" /></form>
+                    <input type="hidden" name="form-name" value="quote" />
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Full Name *</label>
                             <label for="quote-fullName">Full Name *</label>
                             <input type="text" id="quote-fullName" name="fullName" required>
                         </div>
@@ -658,7 +688,7 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <h3>📞 Call Us</h3>
-                        <p>+447749685518</p>
+                        <p><a href="tel:+447749685518" class="phone-link">+447749685518</a></p>
                     </div>
                     <div class="contact-item">
                         <h3>✉️ Email</h3>
@@ -710,10 +740,7 @@
 
     <script src="script.js"></script>
 
-    <script>
-    // Minified: Hamburger menu & Back to Top
-    window.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('backToTop');window.addEventListener('scroll',function(){if(window.scrollY>300){b.style.opacity='1';b.style.pointerEvents='auto';}else{b.style.opacity='0';b.style.pointerEvents='none';}});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});var h=document.getElementById('hamburger');if(h)h.addEventListener('click',function(){document.querySelector('.nav-menu').classList.toggle('active');});});
-    </script>
+
 </body>
 
 </html>

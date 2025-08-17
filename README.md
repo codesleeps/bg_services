@@ -40,7 +40,31 @@ Simply open `index.html` in your web browser to view the website locally.
 
 ## Deployment
 
-This is a static website that can be deployed to any web hosting service or GitHub Pages.
+### GitHub Pages (Current)
+This site is automatically deployed to GitHub Pages on every push to the main branch.
+
+**Live URL**: `https://yourusername.github.io/repository-name`
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/repository-name.git
+
+# Navigate to the directory
+cd repository-name
+
+# Open in browser
+open index.html
+
+# Or use Python server
+python3 -m http.server 8000
+```
+
+### Custom Domain Setup
+When you're ready to use your own domain:
+1. Add your domain to GitHub Pages settings
+2. Update the CNAME in `.github/workflows/deploy.yml`
+3. Configure DNS with your domain provider
 
 ---
 

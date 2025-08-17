@@ -1,3 +1,13 @@
+/* Header */
+.header {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
 /* Accessibility: Skip Link */
 
 /* Hamburger Navigation Fix */
@@ -10,6 +20,7 @@
   border-radius: 4px;
   background: transparent;
   transition: all 0.3s ease;
+  z-index: 10000;
 }
 .hamburger span {
   width: 25px;
@@ -22,24 +33,75 @@
   background: #f8fdf4;
   border-color: #1f3610;
 }
+
+/* Navigation Container */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+/* Logo */
+.logo h1 {
+  color: #2d5016;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.logo .tagline {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 400;
+  margin-top: -5px;
+}
+
+/* Navigation Menu */
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
 }
 .nav-menu a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
   transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }
 .nav-menu a:hover {
   color: #2d5016;
+  background: #f8fdf4;
 }
+
+/* Mobile Navigation */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
   }
+  
+  /* Hamburger animation */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
   .nav-menu {
     position: fixed;
     left: -100%;
@@ -47,56 +109,236 @@
     flex-direction: column;
     background: white;
     width: 100%;
-    transition: 0.3s;
-    z-index: 999;
+    height: calc(100vh - 80px);
+    transition: left 0.3s ease;
+    z-index: 9999;
     gap: 0;
     padding: 2rem 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
   }
+  
   .nav-menu.active {
     left: 0;
   }
+  
+  .nav-menu li {
+    margin: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .nav-menu a {
+    font-size: 1.1rem;
+    padding: 1.5rem 2rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-menu a:hover {
+    background: #f8fdf4;
+    color: #2d5016;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
 }
 
+/* Enhanced Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
 
-.nav-menu {
+/* Section positioning for smooth scrolling */
+section {
+  scroll-margin-top: 100px; /* Account for fixed header */
+}
+
+/* Smooth scrolling for all anchor links */
+a[href^="#"] {
+  scroll-margin-top: 100px;
+}
+
+/* Enhanced scroll behavior for better performance */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for better visual feedback */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d5016;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1f3610;
+}
+
+/* Scrolling state styles */
+body.scrolling {
+  cursor: wait;
+}
+
+body.scrolling * {
+  pointer-events: none;
+}
+
+/* Smooth scroll performance optimizations */
+.smooth-scroll {
+  will-change: scroll-position;
+}
+
+/* Enhanced focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid #2d5016;
+  outline-offset: 2px;
+}
+
+/* Main Content */
+main {
+  margin-top: 80px; /* Account for fixed header */
+}
+
+/* Tab Functionality */
+.booking-tabs {
   display: flex;
-  list-style: none;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  border: 2px solid #2d5016;
+  background: transparent;
+  color: #2d5016;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #2d5016;
+  color: white;
+}
+
+.booking-form,
+.quote-form {
+  display: none;
+}
+
+.booking-form.active,
+.quote-form.active {
+  display: block;
+}
+
+/* Form Styling */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2d5016;
+  box-shadow: 0 0 0 2px rgba(45, 80, 22, 0.1);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
 
-.nav-menu a {
+.contact-item h3 {
+  color: #2d5016;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.phone-link {
+  color: #2d5016;
   text-decoration: none;
-  color: #333;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.nav-menu a:hover {
-  color: #2d5016;
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 8px;
-  border: 2px solid #2d5016;
-  border-radius: 4px;
-  background: transparent;
-  transition: all 0.3s ease;
-}
-
-.nav-toggle:hover {
-  background: #f8fdf4;
-  border-color: #1f3610;
-}
-
-.nav-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #333;
-  margin: 3px 0;
-  transition: 0.3s;
+.phone-link:hover {
+  color: #1f3610;
+  text-decoration: underline;
 }
 
 /* Buttons */
