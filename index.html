@@ -210,17 +210,17 @@
                     <h1>GreenCare Gardens</h1>
                     <span class="tagline">Community Award-Winning Garden Care</span>
                 </div>
+                <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="nav-toggle" id="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
         </nav>
     </header>
@@ -715,6 +715,10 @@
     <script src="script.js"></script>
 
     <script>
+    // Hamburger menu toggle
+    function toggleMenu() {
+        document.querySelector('.nav-menu').classList.toggle('active');
+    }
     // Back to Top Button functionality
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', function() {
