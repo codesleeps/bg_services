@@ -33,12 +33,7 @@
     <meta name="twitter:description"
         content="Award-winning gardening services in Birmingham, Coventry & West Midlands.">
     
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+>
     
     <!-- Critical CSS inline -->
     <style>
@@ -57,7 +52,7 @@
     .hero-text h1{font-size:4rem;font-weight:700;color:white;margin-bottom:1.5rem;line-height:1.2;text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
     @media (max-width:768px){.nav-toggle{display:flex}.nav-menu{position:fixed;left:-100%;top:80px;flex-direction:column;background:white;width:100%;transition:0.3s;z-index:999;padding:2rem 0}.nav-menu.active{left:0}.hero-text h1{font-size:2.8rem}}
     </style>
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"
+    <link rel="stylesheet" href="styles.css"
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -196,7 +191,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="nav-toggle" onclick="toggleMenu()">
+                <div class="nav-toggle" id="nav-toggle">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -468,8 +463,8 @@
                 </div>
 
                 <div class="booking-tabs"></div>
-                <button class="tab-btn active" onclick="showTab('booking')">Book Service</button>
-                <button class="tab-btn" onclick="showTab('quote')">Get Quote</button>
+                <button class="tab-btn active" data-tab="booking">Book Service</button>
+                <button class="tab-btn" data-tab="quote">Get Quote</button>
             </div>
 
             <div class="contact-content">
