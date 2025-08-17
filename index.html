@@ -35,7 +35,7 @@
     <!-- Critical CSS inline -->
     <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;line-height:1.6;color:#333;background:#fff}
+    body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;color:#333;background:#fff}
     .header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:fixed;width:100%;top:0;z-index:1000}
     .nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:80px}
     .logo h1{color:#2d5016;font-size:1.8rem;font-weight:700}
@@ -51,12 +51,11 @@
     </style>
     <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href="images/Garden-turfing.jpg" fetchpriority="high">
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
 
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">
@@ -685,7 +684,7 @@
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
