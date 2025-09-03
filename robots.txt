@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://greencaregardens.co.uk/sitemap.xml
+Sitemap: https://cloverviewlandscapedesigns.co.uk/sitemap.xml
 
 # Disallow admin areas (if any)
 Disallow: /admin/
