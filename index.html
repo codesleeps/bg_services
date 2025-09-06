@@ -34,15 +34,33 @@
                 phoneLinks.forEach(link => {
                     link.addEventListener('click', function() {
                         gtag('event', 'phone_click', {
-                            'event_category': 'engagement',
-                            'event_label': 'phone_contact'
+                            'event_category': 'engagement'
                         });
                     });
                 });
             });
-        </script>
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Critical CSS inline -->
+    <style id="deferred-styles">
+      /* Critical CSS - Above the fold styles */
+      .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+      .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+      .logo h1 { color: #2d5016; font-size: 1.8rem; font-weight: 700; }
+      .hero { margin-top: 80px; position: relative; min-height: 100vh; }
+      .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(45,80,22,0.7); z-index: 1; }
+      .hero-content { position: relative; z-index: 2; max-width: 1200px; padding: 0 20px; text-align: center; }
+      .hero-text h1 { font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1.5rem; line-height: 1.2; }
+      .btn { display: inline-block; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+      .btn-primary { background: #a8d982; color: #2d5016; }
+      .btn-secondary { background: transparent; border: 2px solid #fff; color: #fff; margin-left: 15px; }
+      @media (max-width: 768px) { .hero-text h1 { font-size: 2.2rem; } .btn { display: block; margin: 10px auto; max-width: 200px; } .btn-secondary { margin-left: auto; } }
+    </style>
+    
+    <!-- Load critical JS immediately -->
+    <script src="scripts/critical.js" defer></script>
     <title>Clover View Landscape Designs - Award-Winning Gardening Services Birmingham, Coventry, West Midlands</title>
     
     <!-- GitHub Pages Meta -->
@@ -75,26 +93,12 @@
     <meta name="twitter:description"
         content="Award-winning gardening services in Birmingham, Coventry &amp; West Midlands.">
 
-    <!-- Critical CSS inline -->
-    <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;color:#333;background:#fff}
-    .header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:fixed;width:100%;top:0;z-index:1000}
-    .nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:80px}
-    .logo h1{color:#2d5016;font-size:1.8rem;font-weight:700}
-    .hero{margin-top:80px;position:relative;min-height:100vh;background:url('images/Garden-turfing.jpg') center/cover;display:flex;align-items:center;justify-content:center}
-    .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(45,80,22,0.7);z-index:1}
-    .hero-content{position:relative;z-index:2;max-width:1200px;padding:0 20px;text-align:center}
-    .hero-text h1{font-size:4rem;font-weight:700;color:white;margin-bottom:1.5rem;line-height:1.2;text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
-    @media (max-width:768px){.hero-text h1{font-size:2.8rem}}
-    </style>
-    <link rel="stylesheet" href="styles.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href="images/Garden-turfing.jpg" fetchpriority="high">
-    <link rel="preload" href="styles.css" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">
@@ -223,9 +227,7 @@
         }, 5000); // Delay by 5 seconds after load
     });
 </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="images/Garden-turfing.jpg" fetchpriority="high">
-    <link rel="preload" href="styles.css" as="style">
 </head>
 
 <body>
@@ -369,13 +371,17 @@
                         <h3>Power Washing Transformation</h3>
                         <div class="before-after">
                             <div class="before">
-                                <img src="/images/power-washing-wooden-deck-1.jpg" alt="Dirty wooden deck before power washing" loading="lazy" width="300" height="200"
-                                    srcset="./images/power-washing-wooden-deck-1.webp 300w, ./images/power-washing-wooden-deck-1.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+                                <picture>
+                                    <source type="image/webp" srcset="./images/power-washing-wooden-deck-1.webp 1x, ./images/power-washing-wooden-deck-1.webp 2x">
+                                    <img src="/images/power-washing-wooden-deck-1.jpg" alt="Dirty wooden deck before power washing" loading="lazy" width="300" height="200" decoding="async" fetchpriority="low">
+                                </picture>
                                 <span class="label">Before</span>
                             </div>
                             <div class="after">
-                                <img src="/images/decking.jpg" alt="Clean, restored wooden deck after power washing" loading="lazy" width="300" height="200"
-                                    srcset="./images/decking.webp 300w, ./images/decking.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+                                <picture>
+                                    <source type="image/webp" srcset="./images/decking.webp 1x, ./images/decking.webp 2x">
+                                    <img src="/images/decking.jpg" alt="Clean, restored wooden deck after power washing" loading="lazy" width="300" height="200" decoding="async" fetchpriority="low">
+                                </picture>
                                 <span class="label">After</span>
                             </div>
                         </div>
@@ -387,13 +393,17 @@
                         <h3>Garden Clearance &amp; Restoration</h3>
                         <div class="before-after">
                             <div class="before">
-                                <img src="/images/overgrown.jpg" alt="Overgrown, messy garden before clearance" loading="lazy" width="300" height="200"
-                                    srcset="./images/overgrown.webp 300w, ./images/overgrown.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+                                <picture>
+                                    <source type="image/webp" srcset="./images/overgrown.webp 1x, ./images/overgrown.webp 2x">
+                                    <img src="/images/overgrown.jpg" alt="Overgrown, messy garden before clearance" loading="lazy" width="300" height="200" decoding="async" fetchpriority="low">
+                                </picture>
                                 <span class="label">Before</span>
                             </div>
                             <div class="after">
-                                <img src="/images/Green-Retreats-Garden-Studi.jpg" alt="Clean, cleared garden after professional clearance" loading="lazy" width="300" height="200"
-                                    srcset="./images/Green-Retreats-Garden-Studi.webp 300w, ./images/Green-Retreats-Garden-Studi.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+                                <picture>
+                                    <source type="image/webp" srcset="./images/Green-Retreats-Garden-Studi.webp 1x, ./images/Green-Retreats-Garden-Studi.webp 2x">
+                                    <img src="/images/Green-Retreats-Garden-Studi.jpg" alt="Clean, cleared garden after professional clearance" loading="lazy" width="300" height="200" decoding="async" fetchpriority="low">
+                                </picture>
                                 <span class="label">After</span>
                             </div>
                         </div>
@@ -405,13 +415,17 @@
                         <h3>Professional Turf Installation</h3>
                         <div class="before-after">
                             <div class="before">
-                                <img src="/images/rough_looking_garden.jpg" alt="Rough, uneven garden before turf installation" loading="lazy" width="300" height="200"
-                                    srcset="./images/rough_looking_garden.webp 300w, ./images/rough_looking_garden.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+                                <picture>
+                                    <source type="image/webp" srcset="./images/rough_looking_garden.webp 1x, ./images/rough_looking_garden.webp 2x">
+                                    <img src="/images/rough_looking_garden.jpg" alt="Rough, uneven garden before turf installation" loading="lazy" width="300" height="200" decoding="async" fetchpriority="low">
+                                </picture>
                                 <span class="label">Before</span>
                             </div>
                             <div class="after">
-                                <img src="/images/Garden-turfing.jpg" alt="Perfect, lush green lawn after professional turf laying" loading="lazy" width="300" height="200"
-                                    srcset="./images/Garden-turfing.webp 300w, ./images/Garden-turfing.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+                                <picture>
+                                    <source type="image/webp" srcset="./images/Garden-turfing.webp 1x, ./images/Garden-turfing.webp 2x">
+                                    <img src="/images/Garden-turfing.jpg" alt="Perfect, lush green lawn after professional turf laying" loading="lazy" width="300" height="200" decoding="async" fetchpriority="low">
+                                </picture>
                                 <span class="label">After</span>
                             </div>
                         </div>
@@ -741,9 +755,21 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-
-
+    <!-- Non-critical JavaScript is loaded by critical.js -->
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>
