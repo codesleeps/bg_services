@@ -6,6 +6,7 @@
   width: 100%;
   top: 0;
   z-index: 1000;
+  padding: 15px 0 25px;
 }
 
 /* Accessibility: Skip Link */
@@ -113,9 +114,10 @@
     transition: left 0.3s ease;
     z-index: 9999;
     gap: 0;
-    padding: 2rem 0;
+    padding: 1rem 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .nav-menu.active {
@@ -129,10 +131,15 @@
   
   .nav-menu a {
     font-size: 1.1rem;
-    padding: 1.5rem 2rem;
+    padding: 1.2rem 1.5rem;
     display: block;
     width: 100%;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .nav-menu a:hover {
