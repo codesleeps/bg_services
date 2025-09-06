@@ -780,9 +780,27 @@ main {
 
 .footer-bottom {
   border-top: 1px solid #4a6b2a;
-  padding-top: 2rem;
-  text-align: center;
-  color: #ccc;
+  padding: 2rem 100px 0 0; /* Add right padding for back-to-top button */
+  text-align: left; /* Align text to left */
+  position: relative; /* For absolute positioning of legal links */
+  color: #ccc; /* Match the text color */
+  line-height: 1.6; /* Match line height */
+}
+
+.footer-legal-links {
+  margin-top: 1rem;
+}
+
+.footer-legal-links a {
+  color: #a8d982; /* Match the footer heading color */
+  text-decoration: none;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+  color: #fff; /* White on hover for better visibility */
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
