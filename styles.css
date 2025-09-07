@@ -850,6 +850,14 @@ main {
 
   .hero {
     background-attachment: scroll;
+    background-image: url("images/Garden-turfing.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 80px;
   }
 
   .hero-text h1 {

@@ -191,7 +191,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize back to top
   initBackToTop();
   
-  // Initialize smooth scrolling for data attributes
+  // Remove no-js class and add js class
+  if (document.documentElement.classList.contains('no-js')) {
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  }
+
+  // Show loading indicator
+  const loadingIndicator = document.getElementById('pageLoading');
+  if (loadingIndicator) {
+    loadingIndicator.classList.add('active');
+  }
+
+  // Initialize when DOM is fully loaded
   initSmoothScroll();
   
   // Add smooth scrolling to hero CTA buttons

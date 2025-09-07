@@ -1,0 +1,12 @@
+/* Critical CSS - Above the fold styles */
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); opacity: 0; transition: opacity 0.3s ease-in-out; }
+.nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.logo h1 { color: #2d5016; font-size: 1.8rem; font-weight: 700; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.hero { margin-top: 80px; position: relative; min-height: 100vh; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(45,80,22,0.7); z-index: 1; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.hero-content { position: relative; z-index: 2; max-width: 1200px; padding: 0 20px; text-align: center; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.hero-text h1 { font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1.5rem; line-height: 1.2; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.btn { display: inline-block; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.btn-primary { background: #a8d982; color: #2d5016; }
+.btn-secondary { background: transparent; border: 2px solid #fff; color: #fff; margin-left: 15px; }
+@media (max-width: 768px) { .hero-text h1 { font-size: 2.2rem; } .btn { display: block; margin: 10px auto; max-width: 200px; } .btn-secondary { margin-left: auto; } }
